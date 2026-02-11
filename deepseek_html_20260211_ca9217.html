@@ -1,0 +1,897 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>南京炑炑电子科技有限公司 - 技术赋能，智创未来</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        :root {
+            --primary-color: #0056b3;
+            --secondary-color: #00a8e8;
+            --accent-color: #ff6b35;
+            --dark-color: #1a2b4c;
+            --light-color: #f8f9fa;
+            --gray-color: #6c757d;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #f5f7fa;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* 头部样式 */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-left: 10px;
+        }
+        
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a.active {
+            color: var(--primary-color);
+        }
+        
+        nav ul li a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+        
+        /* 主横幅样式 */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            margin-top: 70px;
+        }
+        
+        .hero h2 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            animation: fadeInUp 1.2s ease-out;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: var(--primary-color);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            animation: fadeInUp 1.4s ease-out;
+        }
+        
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* 内容区域样式 */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 4px;
+            background-color: var(--primary-color);
+        }
+        
+        .section-title p {
+            color: var(--gray-color);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* 卡片样式 */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .card-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-body ul {
+            list-style-position: inside;
+            margin-top: 15px;
+        }
+        
+        .card-body li {
+            margin-bottom: 8px;
+            color: var(--gray-color);
+        }
+        
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(0, 86, 179, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .icon-box i {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+        }
+        
+        /* 关于我们样式 */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* 业务展示样式 */
+        .business-highlight {
+            background-color: var(--light-color);
+        }
+        
+        .service-process {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+        }
+        
+        .process-step {
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+        
+        /* 客户展示样式 */
+        .clients-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .client-item {
+            text-align: center;
+            margin: 15px;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            min-width: 200px;
+        }
+        
+        /* 页脚样式 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .about-image {
+                order: -1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: white;
+                flex-direction: column;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 20px 0;
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                text-align: center;
+            }
+            
+            nav ul li a {
+                display: block;
+                padding: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+        }
+        
+        /* 动画 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* 滚动动画 */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部导航 -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-microchip logo-icon"></i>
+                <h1>炑炑电子</h1>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav>
+                <ul id="mainNav">
+                    <li><a href="#home" class="active">首页</a></li>
+                    <li><a href="#about">关于我们</a></li>
+                    <li><a href="#business">核心业务</a></li>
+                    <li><a href="#services">服务体系</a></li>
+                    <li><a href="#vision">发展愿景</a></li>
+                    <li><a href="#cooperation">合作展望</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主横幅 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h2>技术赋能，智创未来</h2>
+            <p>南京炑炑电子科技有限公司，专注于电子测量与智能装备领域，为行业客户提供"技术研发-产品供应-系统集成-运维服务"的全链条解决方案，助力客户突破技术瓶颈、提升运营效率。</p>
+            <a href="#cooperation" class="cta-button">开启合作</a>
+        </div>
+    </section>
+
+    <!-- 关于我们 -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>关于炑炑电子</h2>
+                <p>南京炑炑电子科技有限公司成立于2022年，是一家深耕电子科技领域的高新技术企业，秉承"诚信为本、技术创新、服务至上"的核心价值观。</p>
+            </div>
+            
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <div class="icon-box">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>企业定位与使命</h3>
+                    <p>作为电子测量与智能装备领域的新锐力量，我们专注于为行业客户提供专业解决方案，致力于成为领域内的创新推动者。</p>
+                    <p>我们的使命是为各行业客户提供"技术研发-产品供应-系统集成-运维服务"的全链条解决方案，助力客户突破技术瓶颈、提升运营效率。</p>
+                    
+                    <div style="margin-top: 30px;">
+                        <h4>核心价值观</h4>
+                        <ul>
+                            <li>诚信为本 - 建立长期信任的合作关系</li>
+                            <li>技术创新 - 持续研发，推动行业进步</li>
+                            <li>服务至上 - 以客户为中心，提供卓越服务</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="about-image">
+                    <!-- 此处可以使用公司实际图片 -->
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af2176?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="南京炑炑电子科技有限公司">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心业务 -->
+    <section id="business" class="business-highlight">
+        <div class="container">
+            <div class="section-title">
+                <h2>核心业务</h2>
+                <p>我们专注于技术研发与转化、全品类产品供应以及集成与运维服务，为客户提供全方位解决方案</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>技术研发与转化</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>聚焦电子专用材料、机械设备、五金产品等领域，开展专业技术开发工作，攻克技术难题。</p>
+                        <ul>
+                            <li>多领域技术开发</li>
+                            <li>技术转让与推广</li>
+                            <li>定制化解决方案</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>全品类产品供应</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>涵盖电子产品、电子元器件、电子专用设备、仪器仪表、计算机软硬件及辅助设备等全系列产品。</p>
+                        <ul>
+                            <li>丰富产品品类</li>
+                            <li>销售与进出口业务</li>
+                            <li>满足多场景需求</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>集成与运维服务</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>提供设备维护与修理、租赁与系统集成服务，打造"销售-安装-校准-维保"的闭环服务体系。</p>
+                        <ul>
+                            <li>设备维护与修理</li>
+                            <li>租赁与系统集成</li>
+                            <li>闭环服务体系</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 服务体系 -->
+    <section id="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>服务体系</h2>
+                <p>我们建立了完善的售前、售中、售后服务体系，为客户提供全方位、全周期的专业服务</p>
+            </div>
+            
+            <div class="service-process">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>售前服务</h3>
+                    <p>专业技术咨询、针对性产品选型、定制化方案设计，确保解决方案具有适配性与前瞻性。</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h3>售中服务</h3>
+                    <p>高效物流配送、标准化安装调试、操作培训与技术指导，确保产品顺利落地并正常运行。</p>
+                </div>
+                
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h3>售后服务</h3>
+                    <p>24小时响应机制、仪器维修与校准溯源、技术升级与定期回访，实现与客户的长期共赢。</p>
+                </div>
+            </div>
+            
+            <div style="margin-top: 60px;">
+                <div class="section-title">
+                    <h3>客户群体分布</h3>
+                </div>
+                
+                <div class="clients-container">
+                    <div class="client-item fade-in">
+                        <i class="fas fa-industry" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4>电子制造领域</h4>
+                        <p>提供电子元器件、专用设备等产品及相关服务</p>
+                    </div>
+                    
+                    <div class="client-item fade-in">
+                        <i class="fas fa-robot" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4>工业自动化领域</h4>
+                        <p>提供仪器仪表、系统集成等解决方案</p>
+                    </div>
+                    
+                    <div class="client-item fade-in">
+                        <i class="fas fa-flask" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4>科研与教育领域</h4>
+                        <p>提供科研试验、教育实训所需的产品和技术支持</p>
+                    </div>
+                    
+                    <div class="client-item fade-in">
+                        <i class="fas fa-bolt" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 15px;"></i>
+                        <h4>交通电力领域</h4>
+                        <p>提供相关的电子设备和服务，保障系统稳定运行</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 发展愿景 -->
+    <section id="vision" class="business-highlight">
+        <div class="container">
+            <div class="section-title">
+                <h2>发展愿景</h2>
+                <p>以"成为国内领先的电子科技综合服务商"为发展目标，通过技术创新与服务优化，树立行业标杆形象</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <h3>总体发展目标</h3>
+                        <p>聚焦技术革新与应用拓展，持续提升全链条服务能力，为各行业客户提供更高效、可靠的解决方案，实现与产业共成长。</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>深化合作与资源拓展</h3>
+                        <p>加强与国内外优质品牌的战略合作，整合前沿技术与产品资源，构建多元化、高品质的供应链体系。</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-body">
+                        <div class="icon-box">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                        <h3>加大研发投入与领域探索</h3>
+                        <p>聚焦智能测量、绿色电子、物联网应用等前沿领域，开展关键技术研究与产品开发，抢占行业技术制高点。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 企业优势 -->
+    <section>
+        <div class="container">
+            <div class="section-title">
+                <h2>企业优势</h2>
+                <p>凭借专业的技术团队、多元的资源整合能力和高效可靠的品牌形象，我们在电子科技领域建立了独特优势</p>
+            </div>
+            
+            <div class="cards-container">
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>专业的技术团队</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>团队成员具备电子科技领域丰富行业经验，熟悉技术研发、产品供应等全链条业务，为客户提供专业支持。</p>
+                        <p>拥有专业技术能力，在电子专用材料、机械设备等领域可进行技术开发、转让与推广，助力客户突破技术瓶颈。</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>多元的资源整合能力</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>整合全球优质供应链资源，涵盖电子产品、电子元器件等全系列产品，确保产品品质与供应效率。</p>
+                        <p>能满足工业生产、科研试验、教育实训等多场景需求，为不同领域客户提供适配的产品与服务。</p>
+                    </div>
+                </div>
+                
+                <div class="card fade-in">
+                    <div class="card-header">
+                        <h3>高效可靠的品牌形象</h3>
+                    </div>
+                    <div class="card-body">
+                        <p>秉承"诚信为本、技术创新、服务至上"的核心价值观，为品牌形象奠定坚实基础。</p>
+                        <p>凭借稳定的产品质量与专业的技术服务，在电子制造、工业自动化等多个领域赢得客户信赖，建立起高效、可靠的品牌形象。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 合作展望 -->
+    <section id="cooperation" class="business-highlight">
+        <div class="container">
+            <div class="section-title">
+                <h2>合作展望</h2>
+                <p>携手共进，共创未来。我们期待与产业链上下游企业、科研机构及行业伙伴建立深度协作关系</p>
+            </div>
+            
+            <div class="about-content fade-in">
+                <div class="about-image">
+                    <!-- 此处可以使用合作相关的图片 -->
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="合作展望">
+                </div>
+                
+                <div class="about-text">
+                    <div class="icon-box">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h3>开放合作，共创价值</h3>
+                    <p>炑炑电子秉持开放包容的合作理念，期待与合作伙伴建立深度协作关系，共享资源、共促发展。</p>
+                    
+                    <div style="margin-top: 25px;">
+                        <h4>我们的合作优势</h4>
+                        <ul>
+                            <li><strong>专业能力支撑：</strong>依托技术研发、全品类供应及集成运维的全链条服务能力，为合作伙伴提供定制化解决方案。</li>
+                            <li><strong>赋能产业升级：</strong>聚焦智能测量、绿色电子、物联网应用等新兴领域，以技术创新驱动产业变革。</li>
+                            <li><strong>共创核心价值：</strong>通过持续优化服务体系与业务布局，与合作伙伴实现优势互补、互利共赢。</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-top: 30px;">
+                        <a href="#contact" class="cta-button">联系我们</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>南京炑炑电子科技有限公司</h3>
+                    <p>技术赋能，智创未来</p>
+                    <p style="margin-top: 15px;">成立于2022年，注册于南京市栖霞区，是一家深耕电子科技领域的高新技术企业。</p>
+                    <div style="margin-top: 20px;">
+                        <p><i class="fas fa-map-marker-alt"></i> 地址：江苏省南京市栖霞区</p>
+                        <p><i class="fas fa-phone"></i> 电话：025-XXXXXXX</p>
+                        <p><i class="fas fa-envelope"></i> 邮箱：info@mumuelec.com</p>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>快速链接</h3>
+                    <ul>
+                        <li><a href="#home">首页</a></li>
+                        <li><a href="#about">关于我们</a></li>
+                        <li><a href="#business">核心业务</a></li>
+                        <li><a href="#services">服务体系</a></li>
+                        <li><a href="#vision">发展愿景</a></li>
+                        <li><a href="#cooperation">合作展望</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>核心业务</h3>
+                    <ul>
+                        <li><a href="#business">技术研发与转化</a></li>
+                        <li><a href="#business">全品类产品供应</a></li>
+                        <li><a href="#business">集成与运维服务</a></li>
+                        <li><a href="#services">售前服务</a></li>
+                        <li><a href="#services">售中服务</a></li>
+                        <li><a href="#services">售后服务</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>关注我们</h3>
+                    <p>获取最新行业动态与公司资讯</p>
+                    <div style="margin-top: 20px; font-size: 1.8rem;">
+                        <a href="#" style="color: #ccc; margin-right: 15px;"><i class="fab fa-weixin"></i></a>
+                        <a href="#" style="color: #ccc; margin-right: 15px;"><i class="fab fa-weibo"></i></a>
+                        <a href="#" style="color: #ccc; margin-right: 15px;"><i class="fab fa-linkedin"></i></a>
+                        <a href="#" style="color: #ccc;"><i class="fab fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 南京炑炑电子科技有限公司 版权所有 | 苏ICP备XXXXXX号</p>
+                <p style="margin-top: 10px;">本网站内容仅供参考，具体信息以公司官方发布为准</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 移动端菜单切换
+        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
+            document.getElementById('mainNav').classList.toggle('show');
+        });
+        
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 关闭移动端菜单
+                document.getElementById('mainNav').classList.remove('show');
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 更新活动导航链接
+                    document.querySelectorAll('nav ul li a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // 滚动时高亮导航
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav ul li a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if(scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if(link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // 滚动动画
+        function checkFadeIn() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if(elementTop < windowHeight - 100) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', checkFadeIn);
+        window.addEventListener('load', checkFadeIn);
+        
+        // 初始加载时检查一次
+        checkFadeIn();
+    </script>
+</body>
+</html>
